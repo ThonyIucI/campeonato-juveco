@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campeonato JUVECO 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #F5C518;
+      --gold-dark: #C9A000;
+      --navy: #0A1628;
+      --navy-mid: #122040;
+      --navy-light: #1C3060;
+      --sky: #1A7FBF;
+      --white: #FFFFFF;
+      --gray: #8A9BB5;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --border: rgba(245, 197, 24, 0.15);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--navy);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── FONDO ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26, 127, 191, 0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(245, 197, 24, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Patrón de triángulos decorativos */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background-image: repeating-linear-gradient(45deg,
+          var(--gold) 0px, var(--gold) 4px,
+          transparent 4px, transparent 14px);
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      padding: 32px 16px 8px;
+      position: relative;
+    }
+
+    .trophy {
+      font-size: 52px;
+      line-height: 1;
+      filter: drop-shadow(0 0 24px rgba(245, 197, 24, 0.6));
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 24px rgba(245, 197, 24, 0.6));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 40px rgba(245, 197, 24, 0.9));
+      }
+    }
+
+    .org-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(52px, 12vw, 24px);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      color: var(--white);
+      text-shadow: 0 0 60px rgba(26, 127, 191, 0.4);
+      margin-top: 4px;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px auto;
+    }
+
+    /* ── FECHA ACTUAL ── */
+    .fecha-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: var(--navy);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 32px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--navy);
+      border-radius: 50%;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--navy-mid);
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 80px;
+      background: transparent;
+      border: none;
+      color: var(--gray);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .25s;
+    }
+
+    .tab-btn.active {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .tab-btn:hover:not(.active) {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ── SECCIÓN ENCABEZADO ── */
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── TABLA ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+    }
+
+    thead th {
+      background: var(--navy-mid);
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 11px;
+      padding: 12px 10px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    thead th:first-child {
+      text-align: left;
+      padding-left: 16px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: rgba(245, 197, 24, 0.04);
+    }
+
+    tbody td {
+      padding: 11px 10px;
+      text-align: center;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    tbody td:first-child {
+      text-align: left;
+      padding-left: 16px;
+    }
+
+    .pos-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--navy-light);
+      color: var(--gray);
+    }
+
+    .pos-1 {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .pos-2 {
+      background: #C0C0C0;
+      color: var(--navy);
+    }
+
+    .pos-3 {
+      background: #CD7F32;
+      color: var(--white);
+    }
+
+    .team-name {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .team-name small {
+      display: block;
+      font-size: 11px;
+      color: var(--gray);
+      font-weight: 400;
+    }
+
+    .pts {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 20px;
+      color: var(--gold);
+    }
+
+    .gd-pos {
+      color: #4ade80;
+    }
+
+    .gd-neg {
+      color: #f87171;
+    }
+
+    .gd-zero {
+      color: var(--gray);
+    }
+
+    /* ── FORMA (últimas 5 jornadas) ── */
+    .forma {
+      display: flex;
+      gap: 3px;
+      justify-content: center;
+    }
+
+    .f {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .f-w {
+      background: #4ade80;
+      color: #052e16;
+    }
+
+    .f-d {
+      background: #facc15;
+      color: #422006;
+    }
+
+    .f-l {
+      background: #f87171;
+      color: #450a0a;
+    }
+
+    /* ── RESULTADOS ── */
+    .fecha-block {
+      margin-bottom: 28px;
+    }
+
+    .fecha-header {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--navy-mid);
+      padding: 8px 16px;
+      border-radius: 8px 8px 0 0;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fecha-date {
+      color: var(--gray);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .partido-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: 14px 20px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      transition: background .2s;
+    }
+
+    .partido-card:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+
+    .partido-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .p-team {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .p-team-left {
+      text-align: right;
+    }
+
+    .p-team-right {
+      text-align: left;
+    }
+
+    .p-score {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .p-score-sep {
+      color: var(--gray);
+      font-size: 22px;
+    }
+
+    .p-pending {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── GOLEADORES ── */
+    .gol-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .gol-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: background .2s;
+    }
+
+    .gol-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .gol-rank {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px;
+      color: var(--gray);
+      width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .gol-rank.top {
+      color: var(--gold);
+    }
+
+    .gol-info {
+      flex: 1;
+    }
+
+    .gol-nombre {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .gol-equipo {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .gol-count {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .gol-icon {
+      font-size: 16px;
+    }
+
+    /* ── TARJETAS ── */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .tarjeta {
+      width: 18px;
+      height: 26px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .tarjeta-amarilla {
+      background: #facc15;
+    }
+
+    .tarjeta-roja {
+      background: #ef4444;
+    }
+
+    .card-info {
+      flex: 1;
+    }
+
+    .card-nombre {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .card-equipo {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .card-counts {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .c-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .c-dot {
+      width: 12px;
+      height: 18px;
+      border-radius: 2px;
+    }
+
+    .c-dot-y {
+      background: #facc15;
+    }
+
+    .c-dot-r {
+      background: #ef4444;
+    }
+
+    /* ── PORTEROS ── */
+    .valla-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .valla-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .valla-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .valla-info {
+      flex: 1;
+    }
+
+    .valla-nombre {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .valla-equipo {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .valla-count {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 26px;
+      color: #4ade80;
+    }
+
+    .valla-label {
+      font-size: 10px;
+      color: var(--gray);
+      text-align: center;
+    }
+
+    /* ── STATS MINI ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 38px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-lbl {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      color: var(--gray);
+      letter-spacing: 1px;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    footer strong {
+      color: var(--gold);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 500px) {
+      .p-team {
+        font-size: 14px;
+      }
+
+      .p-score {
+        font-size: 26px;
+      }
+
+      .tabs {
+        gap: 2px;
+      }
+
+      .tab-btn {
+        font-size: 11px;
+        padding: 8px 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════
+     ✏️  DATOS DEL CAMPEONATO
+     Edita solo este bloque cada semana.
+     ══════════════════════════════════════ -->
+  <script>
+    const EQUIPOS_IDS = {
+      BOCA: 'boca',
+      PARQUE: 'parque',
+      PLAZA: 'plaza',
+      SANTA_ROSA: 'santa_rosa',
+      SAMAN_CHICO: 'saman_chico',
+      FLAMENGO: 'flam',
+      PALMERAS: 'palm',
+      POSTA: 'posta',
+      VENCEDORES: 'vencedores',
+      SAN_MARTIN: 'vsm',
+    }
+
+    // ── 1. EQUIPOS ─────────────────────────────────────────────────────────────
+    // Agrega o quita equipos aquí. El id debe coincidir en partidos y estadísticas.
+    const EQUIPOS = [
+      { id: EQUIPOS_IDS.BOCA, nombre: 'Sport Boca Junior', alias: 'Boca' },
+      { id: EQUIPOS_IDS.PARQUE, nombre: 'Sport Parque', alias: 'Parque' },
+      { id: EQUIPOS_IDS.PLAZA, nombre: 'Sport Plaza', alias: 'Plaza' },
+      { id: EQUIPOS_IDS.SANTA_ROSA, nombre: 'Sport Santa Rosa', alias: 'Sta. Rosa' },
+      { id: EQUIPOS_IDS.SAMAN_CHICO, nombre: 'Samán Chico', alias: 'Samán Ch.' },
+      { id: EQUIPOS_IDS.FLAMENGO, nombre: 'Sport Flamengo', alias: 'Flamengo' },
+      { id: EQUIPOS_IDS.PALMERAS, nombre: 'Sport Palmeras', alias: 'Palmeras' },
+      { id: EQUIPOS_IDS.POSTA, nombre: 'Sport Sport Posta', alias: 'Posta' },
+      { id: EQUIPOS_IDS.VENCEDORES, nombre: 'Sport Vencedores', alias: 'Vencedores' },
+      { id: EQUIPOS_IDS.SAN_MARTIN, nombre: 'San Martín Golondrina', alias: 'B. San Martín' },
+    ];
+
+    // ── 2. PARTIDOS POR FECHA ─────────────────────────────────────────────────
+    // local / visita: id del equipo (debe estar en EQUIPOS)
+    // gl / gv: goles local / goles visita  (null = pendiente)
+    // Agrega objetos de fecha semana a semana.
+    const FECHAS = [
+      {
+        numero: 1,
+        fecha: '01 de mayo 2025',
+        partidos: [
+          { local: EQUIPOS_IDS.PARQUE, visita: EQUIPOS_IDS.BOCA, gl: 1, gv: 0 },
+          { local: EQUIPOS_IDS.SANTA_ROSA, visita: EQUIPOS_IDS.PLAZA, gl: 1, gv: 0 },
+          { local: EQUIPOS_IDS.FLAMENGO, visita: EQUIPOS_IDS.SAMAN_CHICO, gl: 1, gv: 2 },
+          { local: EQUIPOS_IDS.PALMERAS, visita: EQUIPOS_IDS.POSTA, gl: 3, gv: 0 },
+          { local: EQUIPOS_IDS.VENCEDORES, visita: EQUIPOS_IDS.SAN_MARTIN, gl: 1, gv: 1 },
+        ]
+      },
+      // ── FECHA 2 (8 de mayo) ──
+      // {
+      //   numero: 2,
+      //   fecha: '08 de mayo 2025',
+      //   partidos: [
+      //     { local: 'boca', visita: 'plaza', gl: 2, gv: 1 },
+      //     ...
+      //   ]
+      // },
+    ];
+const Jugadores ={
+  ato_nole_ronal_omar: 'Ato Nole Ronal Omar',
+  silva_calderon_jose_andres: 'Silva Calderón José Andrés',
+  atoche_ordenila_marlon: 'Atoche Ordinola Marlon',
+  sandoval_palacios_edwin: 'Sandoval Palacios Edwin',
+  castro_valdiviezo_angel: 'Castro Valdiviezo Angel',
+  atoche_saldarriaga_anthony_michael: 'Atoche Saldarriaga Anthony Michael',
+  rojas_espinoza_carlos: 'Rojas Espinoza Carlos',
+  aguilar_urbina_jheans: 'Aguilar Urbina Jheans',
+  villegas_saldarriaga_efrain: 'Villegas Saldarriaga Efraín',
+}
+    // ── 3. GOLEADORES ─────────────────────────────────────────────────────────
+    // Agrega un objeto por jugador. Actualiza `goles` cada fecha.
+    const GOLEADORES = [
+      { nombre: Jugadores.ato_nole_ronal_omar,   equipo: EQUIPOS_IDS.BOCA,  goles: 3 },
+      { nombre: Jugadores.silva_calderon_jose_andres, equipo: EQUIPOS_IDS.PARQUE,  goles: 2 },
+      { nombre: Jugadores.atoche_ordenila_marlon, equipo: EQUIPOS_IDS.PLAZA,  goles: 1 },
+      { nombre: Jugadores.sandoval_palacios_edwin, equipo: EQUIPOS_IDS.SANTA_ROSA,  goles: 1 },
+      { nombre: Jugadores.castro_valdiviezo_angel, equipo: EQUIPOS_IDS.SAMAN_CHICO,  goles: 3 },
+      { nombre: Jugadores.atoche_saldarriaga_anthony_michael, equipo: EQUIPOS_IDS.PALMERAS,  goles: 3 },
+      { nombre: Jugadores.rojas_espinoza_carlos, equipo: EQUIPOS_IDS.PALMERAS,  goles: 2 },
+      { nombre: Jugadores.aguilar_urbina_jheans, equipo: EQUIPOS_IDS.VENCEDORES,  goles: 1 },
+      { nombre: Jugadores.villegas_saldarriaga_efrain, equipo: EQUIPOS_IDS.SAN_MARTIN,  goles: 1 },
+    ];
+
+    // ── 4. TARJETAS ───────────────────────────────────────────────────────────
+    const TARJETAS = [
+      { equipo: EQUIPOS_IDS.SANTA_ROSA, amarillas: 2, rojas: 0 },
+      { equipo: EQUIPOS_IDS.PLAZA, amarillas: 2, rojas: 0 },
+      { equipo: EQUIPOS_IDS.SAMAN_CHICO, amarillas: 2, rojas: 0 },
+      { equipo: EQUIPOS_IDS.PALMERAS, amarillas: 1, rojas: 0 },
+      { equipo: EQUIPOS_IDS.VENCEDORES, amarillas: 2, rojas: 0 },
+      { equipo: EQUIPOS_IDS.SAN_MARTIN, amarillas: 5, rojas: 0 },
+    ];
+
+    // ── 5. VALLA INVICTA (porteros / equipos con menos goles en contra) ────────
+    const VALLA_INVICTA = [
+      // { nombre: 'Roberto Díaz', equipo: 'parque', gc: 0 },  // gc = goles en contra
+    ];
+
+    // ── CONFIG GENERAL ─────────────────────────────────────────────────────────
+    const CONFIG = {
+      totalFechas: 10,
+      org: 'JUVECO 2026',
+    };
+
+  </script>
+
+  <!-- ══════════════════════════════════════
+     NO TOCAR DEBAJO DE ESTA LÍNEA
+     (lógica de renderizado automático)
+     ══════════════════════════════════════ -->
+
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <header>
+      <div class="trophy">🏆</div>
+      <p class="org-label">⚽ &nbsp; <span id="org-label"></span> &nbsp; ⚽</p>
+      <h1>CAMPEONA<span>TO</span><br>2026</h1>
+      <p class="subtitle">Encuentros · Resultados · Estadísticas</p>
+      <div class="divider"></div>
+      <div class="fecha-badge">
+        <span class="dot"></span>
+        Jornada <span id="jornada-actual"></span> de <span id="jornada-total"></span>
+      </div>
+    </header>
+
+    <!-- STATS RÁPIDAS -->
+    <div class="stats-grid" id="stats-grid"></div>
+
+    <!-- TABS -->
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-tab="posiciones">Posiciones</button>
+      <button class="tab-btn" data-tab="resultados">Resultados</button>
+      <button class="tab-btn" data-tab="goleadores">Goleadores</button>
+      <button class="tab-btn" data-tab="tarjetas">Tarjetas</button>
+      <!-- <button class="tab-btn" data-tab="valla">Valla</button> -->
+    </div>
+
+    <!-- TAB: POSICIONES -->
+    <div class="tab-panel active" id="tab-posiciones">
+      <p class="section-title">🏅 Tabla de Posiciones</p>
+      <div class="table-wrap">
+        <table id="tabla-posiciones">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th style="text-align:left;padding-left:16px">Equipo</th>
+              <th>PJ</th>
+              <th>PG</th>
+              <th>PE</th>
+              <th>PP</th>
+              <th>GF</th>
+              <th>GC</th>
+              <th>DG</th>
+              <th>Pts</th>
+              <th>Forma</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-posiciones"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB: RESULTADOS -->
+    <div class="tab-panel" id="tab-resultados">
+      <p class="section-title">📋 Resultados por Fecha</p>
+      <div id="resultados-container"></div>
+    </div>
+
+    <!-- TAB: GOLEADORES -->
+    <div class="tab-panel" id="tab-goleadores">
+      <p class="section-title">⚽ Tabla de Goleadores</p>
+      <div class="gol-list" id="gol-list"></div>
+    </div>
+
+    <!-- TAB: TARJETAS -->
+    <div class="tab-panel" id="tab-tarjetas">
+      <p class="section-title">🟨 Disciplina</p>
+      <div class="card-list" id="card-list"></div>
+    </div>
+
+    <!-- TAB: VALLA INVICTA -->
+    <!-- <div class="tab-panel" id="tab-valla">
+      <p class="section-title">🧤 Valla Menos Vencida</p>
+      <div class="valla-list" id="valla-list"></div>
+    </div> -->
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    Organizado por <strong id="footer-org"></strong> &nbsp;·&nbsp; Campeonato 2026<br>
+    <small>Actualizado: <span id="footer-fecha"></span></small>
+  </footer>
+
+  <script>
+    /* ══════════════════════════════════════════
+       MOTOR DE RENDERIZADO
+       ══════════════════════════════════════════ */
+
+    // ── Helpers ──────────────────────────────────────────────────────────────────
+    function nombreEquipo(id) {
+      const e = EQUIPOS.find(x => x.id === id);
+      return e ? e.nombre : id;
+    }
+
+    function aliasEquipo(id) {
+      const e = EQUIPOS.find(x => x.id === id);
+      return e ? e.alias : id;
+    }
+
+    // ── Calcular posiciones ───────────────────────────────────────────────────────
+    function calcPosiciones() {
+      const stats = {};
+      EQUIPOS.forEach(e => {
+        stats[e.id] = { id: e.id, pj: 0, g: 0, emp: 0, p: 0, gf: 0, gc: 0, forma: [] };
+      });
+
+      FECHAS.forEach(fecha => {
+        fecha.partidos.forEach(par => {
+          if (par.gl === null || par.gv === null) return;
+          const l = stats[par.local];
+          const v = stats[par.visita];
+          if (!l || !v) return;
+
+          l.pj++; v.pj++;
+          l.gf += par.gl; l.gc += par.gv;
+          v.gf += par.gv; v.gc += par.gl;
+
+          if (par.gl > par.gv) { l.g++; v.p++; l.forma.push('W'); v.forma.push('L'); }
+          else if (par.gl < par.gv) { v.g++; l.p++; v.forma.push('W'); l.forma.push('L'); }
+          else { l.emp++; v.emp++; l.forma.push('D'); v.forma.push('D'); }
+        });
+      });
+
+      return Object.values(stats)
+        .map(s => ({ ...s, pts: s.g * 3 + s.emp, dg: s.gf - s.gc }))
+        .sort((a, b) => b.pts - a.pts || b.dg - a.dg || b.gf - a.gf);
+    }
+
+    // ── Render posiciones ─────────────────────────────────────────────────────────
+    function renderPosiciones() {
+      const data = calcPosiciones();
+      const tbody = document.getElementById('tbody-posiciones');
+      tbody.innerHTML = '';
+
+      data.forEach((e, i) => {
+        const pos = i + 1;
+        const posClass = pos <= 3 ? `pos-${pos}` : '';
+        const dg = e.dg > 0 ? `<span class="gd-pos">+${e.dg}</span>`
+          : e.dg < 0 ? `<span class="gd-neg">${e.dg}</span>`
+            : `<span class="gd-zero">0</span>`;
+
+        const forma = e.forma.slice(-5).map(f => {
+          const cls = f === 'W' ? 'f-w' : f === 'D' ? 'f-d' : 'f-l';
+          return `<span class="f ${cls}"></span>`;
+        }).join('');
+
+        tbody.innerHTML += `
+      <tr>
+        <td><span class="pos-num ${posClass}">${pos}</span></td>
+        <td><span class="team-name">${nombreEquipo(e.id)}</span></td>
+        <td>${e.pj}</td>
+        <td>${e.g}</td>
+        <td>${e.emp}</td>
+        <td>${e.p}</td>
+        <td>${e.gf}</td>
+        <td>${e.gc}</td>
+        <td>${dg}</td>
+        <td><span class="pts">${e.pts}</span></td>
+        <td><div class="forma">${forma || '<span style="color:var(--gray);font-size:11px">—</span>'}</div></td>
+      </tr>`;
+      });
+    }
+
+    // ── Render resultados ─────────────────────────────────────────────────────────
+    function renderResultados() {
+      const c = document.getElementById('resultados-container');
+      c.innerHTML = '';
+
+      if (FECHAS.length === 0) {
+        c.innerHTML = '<p style="color:var(--gray);text-align:center;padding:32px">Aún no hay resultados registrados.</p>';
+        return;
+      }
+
+      [...FECHAS].reverse().forEach(f => {
+        let partidos = f.partidos.map(par => {
+          const score = par.gl !== null
+            ? `<div class="p-score"><span>${par.gl}</span><span class="p-score-sep">–</span><span>${par.gv}</span></div>`
+            : `<div class="p-pending">Por jugar</div>`;
+          return `
+        <div class="partido-card">
+          <div class="p-team p-team-left">${aliasEquipo(par.local)}</div>
+          ${score}
+          <div class="p-team p-team-right">${aliasEquipo(par.visita)}</div>
+        </div>`;
+        }).join('');
+
+        c.innerHTML += `
+      <div class="fecha-block">
+        <div class="fecha-header">
+          <span>Fecha ${f.numero}</span>
+          <span class="fecha-date">${f.fecha}</span>
+        </div>
+        ${partidos}
+      </div>`;
+      });
+    }
+
+    // ── Render goleadores ─────────────────────────────────────────────────────────
+    function renderGoleadores() {
+      const list = document.getElementById('gol-list');
+      const sorted = [...GOLEADORES].sort((a, b) => b.goles - a.goles);
+
+      if (sorted.length === 0) {
+        list.innerHTML = '<p style="color:var(--gray);text-align:center;padding:32px">Sin datos de goleadores aún.</p>';
+        return;
+      }
+
+      list.innerHTML = sorted.map((g, i) => {
+        const top = i < 3 ? 'top' : '';
+        return `
+      <div class="gol-item">
+        <span class="gol-rank ${top}">${i + 1}</span>
+        <div class="gol-info">
+          <div class="gol-nombre">${g.nombre}</div>
+          <div class="gol-equipo">${nombreEquipo(g.equipo)}</div>
+        </div>
+        <div class="gol-count">
+          <span class="gol-icon">⚽</span>
+          ${g.goles}
+        </div>
+      </div>`;
+      }).join('');
+    }
+
+    // ── Render tarjetas ───────────────────────────────────────────────────────────
+    function renderTarjetas() {
+      const list = document.getElementById('card-list');
+      const sorted = [...TARJETAS].sort((a, b) => (b.rojas * 3 + b.amarillas) - (a.rojas * 3 + a.amarillas));
+
+      if (sorted.length === 0) {
+        list.innerHTML = '<p style="color:var(--gray);text-align:center;padding:32px">Sin tarjetas registradas aún.</p>';
+        return;
+      }
+
+      list.innerHTML = sorted.map(t => `
+    <div class="card-item">
+      <div class="card-info">
+        <div class="card-nombre">${nombreEquipo(t.equipo)}</div>
+      </div>
+      <div class="card-counts">
+        <span class="c-badge"><span class="c-dot c-dot-y"></span> ${t.amarillas}</span>
+        <span class="c-badge"><span class="c-dot c-dot-r"></span> ${t.rojas}</span>
+      </div>
+    </div>`).join('');
+    }
+
+    // ── Render valla invicta ──────────────────────────────────────────────────────
+    function renderValla() {
+      const list = document.getElementById('valla-list');
+      const sorted = [...VALLA_INVICTA].sort((a, b) => a.gc - b.gc);
+
+      if (sorted.length === 0) {
+        list.innerHTML = '<p style="color:var(--gray);text-align:center;padding:32px">Sin datos de porteros aún.</p>';
+        return;
+      }
+
+      list.innerHTML = sorted.map(v => `
+    <div class="valla-item">
+      <span class="valla-icon">🧤</span>
+      <div class="valla-info">
+        <div class="valla-nombre">${v.nombre}</div>
+        <div class="valla-equipo">${nombreEquipo(v.equipo)}</div>
+      </div>
+      <div style="text-align:center">
+        <div class="valla-count">${v.gc}</div>
+        <div class="valla-label">Goles en contra</div>
+      </div>
+    </div>`).join('');
+    }
+
+    // ── Render stats rápidas ──────────────────────────────────────────────────────
+    function renderStats() {
+      let totalGoles = 0, totalPartidos = 0, fechasJugadas = 0;
+
+      FECHAS.forEach(f => {
+        let fJugada = false;
+        f.partidos.forEach(p => {
+          if (p.gl !== null) {
+            totalGoles += p.gl + p.gv;
+            totalPartidos++;
+            fJugada = true;
+          }
+        });
+        if (fJugada) fechasJugadas++;
+      });
+
+      const prom = totalPartidos > 0 ? (totalGoles / totalPartidos).toFixed(1) : '—';
+
+      document.getElementById('stats-grid').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-val">${fechasJugadas}</div>
+      <div class="stat-lbl">Fechas jugadas</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">${totalPartidos}</div>
+      <div class="stat-lbl">Partidos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">${totalGoles}</div>
+      <div class="stat-lbl">Goles totales</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">${prom}</div>
+      <div class="stat-lbl">Goles por partido</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">${GOLEADORES.reduce((s, g) => s + g.goles, 0)}</div>
+      <div class="stat-lbl">Goles registrados</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">${TARJETAS.reduce((s, t) => s + t.rojas, 0)}</div>
+      <div class="stat-lbl">Tarjetas rojas</div>
+    </div>`;
+    }
+
+    // ── Header dinámico ───────────────────────────────────────────────────────────
+    function renderHeader() {
+      document.getElementById('org-label').textContent = CONFIG.org;
+      document.getElementById('footer-org').textContent = CONFIG.org;
+      document.getElementById('jornada-total').textContent = CONFIG.totalFechas;
+
+      const jugadas = FECHAS.filter(f => f.partidos.some(p => p.gl !== null)).length;
+      document.getElementById('jornada-actual').textContent = jugadas;
+
+      const hoy = new Date();
+      document.getElementById('footer-fecha').textContent = hoy.toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' });
+    }
+
+    // ── Tabs ──────────────────────────────────────────────────────────────────────
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ── INIT ──────────────────────────────────────────────────────────────────────
+    renderHeader();
+    renderStats();
+    renderPosiciones();
+    renderResultados();
+    renderGoleadores();
+    renderTarjetas();
+    // renderValla();
+  </script>
+</body>
+
+</html>
