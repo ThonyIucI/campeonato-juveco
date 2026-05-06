@@ -754,7 +754,7 @@
       { id: EQUIPOS_IDS.PALMERAS, nombre: 'Sport Palmeras', alias: 'Palmeras' },
       { id: EQUIPOS_IDS.POSTA, nombre: 'Sport Sport Posta', alias: 'Posta' },
       { id: EQUIPOS_IDS.VENCEDORES, nombre: 'Sport Vencedores', alias: 'Vencedores' },
-      { id: EQUIPOS_IDS.SAN_MARTIN, nombre: 'San Martín Golondrina', alias: 'B. San Martín' },
+      { id: EQUIPOS_IDS.SAN_MARTIN, nombre: 'San Martín Golondrina', alias: 'San Martín' },
     ];
 
     // ── 2. PARTIDOS POR FECHA ─────────────────────────────────────────────────
@@ -986,7 +986,7 @@ const Jugadores ={
         tbody.innerHTML += `
       <tr>
         <td><span class="pos-num ${posClass}">${pos}</span></td>
-        <td><span class="team-name">${nombreEquipo(e.id)}</span></td>
+        <td><span class="team-name">${aliasEquipo(e.id)}</span></td>
         <td>${e.pj}</td>
         <td>${e.g}</td>
         <td>${e.emp}</td>
@@ -1017,9 +1017,9 @@ const Jugadores ={
             : `<div class="p-pending">Por jugar</div>`;
           return `
         <div class="partido-card">
-          <div class="p-team p-team-left">${aliasEquipo(par.local)}</div>
+          <div class="p-team p-team-left">${nombreEquipo(par.local)}</div>
           ${score}
-          <div class="p-team p-team-right">${aliasEquipo(par.visita)}</div>
+          <div class="p-team p-team-right">${nombreEquipo(par.visita)}</div>
         </div>`;
         }).join('');
 
