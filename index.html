@@ -789,7 +789,7 @@
       },
       // ── FECHA 2 (8 de mayo) ──
       {
-        numero: 1,
+        numero: 2,
         fecha: '17 de mayo 2026',
         partidos: [
           { local: EQUIPOS_IDS.VENCEDORES, visita: EQUIPOS_IDS.FLAMENGO, gl: 1, gv: 0 },
@@ -797,6 +797,18 @@
           { local: EQUIPOS_IDS.PARQUE, visita: EQUIPOS_IDS.POSTA, gl: 0, gv: 2 },
           { local: EQUIPOS_IDS.SANTA_ROSA, visita: EQUIPOS_IDS.BOCA, gl: 0, gv: 0 },
           { local: EQUIPOS_IDS.SAMAN_CHICO, visita: EQUIPOS_IDS.PALMERAS, gl: 1, gv: 0 },
+        ]
+      },
+      // ── FECHA 3 (24 de mayo) ──
+      {
+        numero: 3,
+        fecha: '24 de mayo 2026',
+        partidos: [
+          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.SAN_MARTIN, gl: 1, gv: 1 },
+          { local: EQUIPOS_IDS.PANAMERICANA, visita: EQUIPOS_IDS.FLAMENGO, gl: 1, gv: 2 },
+          { local: EQUIPOS_IDS.PARQUE, visita: EQUIPOS_IDS.SANTA_ROSA, gl: 1, gv: 1 },
+          { local: EQUIPOS_IDS.VENCEDORES, visita: EQUIPOS_IDS.PALMERAS, gl: 2, gv: 2 },
+          { local: EQUIPOS_IDS.SAMAN_CHICO, visita: EQUIPOS_IDS.POSTA, gl: 1, gv: 2 },
         ]
       },
     ];
@@ -815,39 +827,57 @@
       leandro_saldarriaga:'Saldarriaga Silva Leandro',
       darwin_gonzalez:'Gonzalez García Darwin',
       marco_garrido:'Garrido Caldeŕon Marco',
-      victor_gonzales:'Gonzales Ordinola Victor L.'
+      victor_gonzales:'Gonzales Ordinola Victor L.',
+      socola_harry: 'Socola Saldarriaga Harry',
+      ruiz_edwin: 'Ruiz Saldarriaga Edwin',
+      palomino_jorge: 'Palomino Silva Jorge',
+      atoche_eddi: 'Atoche Ruiz Eddi',
+      nole_david: 'Nole Cordova David',
+      chero_luis: 'Chero Saavedra Luis',
+      denis_urbina: 'Denis Ordinola Urbina',
+      farias_andy: 'Farias Avalo Andy',
     }
     // ── 3. GOLEADORES ─────────────────────────────────────────────────────────
     // Agrega un objeto por jugador. Actualiza `goles` cada fecha.
     const GOLEADORES = [
       { nombre: Jugadores.ato_ronal, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
-      { nombre: Jugadores.silva, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 1 },
+      { nombre: Jugadores.silva, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: (1+1) },
       { nombre: Jugadores.atoche_marlon, equipo: EQUIPOS_IDS.FLAMENGO, goles: 1 },
       { nombre: Jugadores.sandoval_edwin, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
       { nombre: Jugadores.castro_angel, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
-      { nombre: Jugadores.atoche_anthony, equipo: EQUIPOS_IDS.PALMERAS, goles: 2 },
+      { nombre: Jugadores.atoche_anthony, equipo: EQUIPOS_IDS.PALMERAS, goles: (2+0+2) },
       { nombre: Jugadores.rojas_carlos, equipo: EQUIPOS_IDS.PALMERAS, goles: 1 },
       { nombre: Jugadores.aguilar_jheans, equipo: EQUIPOS_IDS.VENCEDORES, goles: 1 },
       { nombre: Jugadores.villegas_efrain, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
       { nombre: Jugadores.cesar_mena_r, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
       { nombre: Jugadores.harold_palomino, equipo: EQUIPOS_IDS.PANAMERICANA, goles: 2 },
       { nombre: Jugadores.leandro_saldarriaga, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
-      { nombre: Jugadores.darwin_gonzalez, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 1 },
+      { nombre: Jugadores.darwin_gonzalez, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: (1+0+1)},
       { nombre: Jugadores.marco_garrido, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 1 },
       { nombre: Jugadores.victor_gonzales, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
+      { nombre: Jugadores.socola_harry, equipo: EQUIPOS_IDS.PLAZA, goles: 1 },
+      { nombre: Jugadores.ruiz_edwin, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
+      { nombre: Jugadores.palomino_jorge, equipo: EQUIPOS_IDS.PANAMERICANA, goles: 1 },
+      { nombre: Jugadores.atoche_eddi, equipo: EQUIPOS_IDS.FLAMENGO, goles: 2 },
+      { nombre: Jugadores.nole_david, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
+      { nombre: Jugadores.chero_luis, equipo: EQUIPOS_IDS.VENCEDORES, goles: 2 },
+      { nombre: Jugadores.denis_urbina, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
+      { nombre: Jugadores.farias_andy, equipo: EQUIPOS_IDS.POSTA, goles: 1 },
     ];
 
     // ── 4. TARJETAS ───────────────────────────────────────────────────────────
     const TARJETAS = [
-      { equipo: EQUIPOS_IDS.SANTA_ROSA, amarillas: 2, rojas: 0 },
+      { equipo: EQUIPOS_IDS.SANTA_ROSA, amarillas: (2+1), rojas: 0 },
       { equipo: EQUIPOS_IDS.PLAZA, amarillas: 2, rojas: 0 },
-      { equipo: EQUIPOS_IDS.SAMAN_CHICO, amarillas: (2+1), rojas: 0 },
+      { equipo: EQUIPOS_IDS.SAMAN_CHICO, amarillas: (2+1+2), rojas: 0 },
       { equipo: EQUIPOS_IDS.PALMERAS, amarillas: (1+2), rojas: 0 },
-      { equipo: EQUIPOS_IDS.VENCEDORES, amarillas: 2, rojas: 0 },
-      { equipo: EQUIPOS_IDS.SAN_MARTIN, amarillas: 5, rojas: 0 },
+      { equipo: EQUIPOS_IDS.VENCEDORES, amarillas: (2+2), rojas: 0 },
+      { equipo: EQUIPOS_IDS.SAN_MARTIN, amarillas: (5+1), rojas: 0 },
       { equipo: EQUIPOS_IDS.PANAMERICANA, amarillas: (0+1), rojas: 0 },
-      { equipo: EQUIPOS_IDS.POSTA, amarillas: (0 + 1), rojas: 0 },
+      { equipo: EQUIPOS_IDS.POSTA, amarillas: (0 + 1 + 1), rojas: 0 },
       { equipo: EQUIPOS_IDS.BOCA, amarillas: (0 + 1), rojas: 0 },
+      { equipo: EQUIPOS_IDS.FLAMENGO, amarillas: 1, rojas: 0 },
+      { equipo: EQUIPOS_IDS.PARQUE, amarillas: 0, rojas: 0 },
     ];
 
     // ── 5. VALLA INVICTA (porteros / equipos con menos goles en contra) ────────
