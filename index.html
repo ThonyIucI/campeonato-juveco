@@ -765,7 +765,7 @@
       { id: EQUIPOS_IDS.SAMAN_CHICO, nombre: 'Samán Chico', alias: 'Samán Ch.' },
       { id: EQUIPOS_IDS.FLAMENGO, nombre: 'Sport Flamengo', alias: 'Flamengo' },
       { id: EQUIPOS_IDS.PALMERAS, nombre: 'Sport Palmeras', alias: 'Palmeras' },
-      { id: EQUIPOS_IDS.POSTA, nombre: 'Sport Sport Posta', alias: 'Posta' },
+      { id: EQUIPOS_IDS.POSTA, nombre: 'Sport Posta', alias: 'Posta' },
       { id: EQUIPOS_IDS.VENCEDORES, nombre: 'Sport Vencedores', alias: 'Vencedores' },
       { id: EQUIPOS_IDS.SAN_MARTIN, nombre: 'San Martín Golondrina', alias: 'San Martín' },
       { id: EQUIPOS_IDS.PANAMERICANA, nombre: 'Sport Panamericana - Golondrina', alias: 'Panamericana' },
@@ -823,6 +823,18 @@
           { local: EQUIPOS_IDS.SAMAN_CHICO, visita: EQUIPOS_IDS.VENCEDORES, gl: 0, gv: 0 },
         ]
       },
+      // ── FECHA 5 (14 de junio) ──
+      {
+        numero: 5,
+        fecha: '14 de junio 2026',
+        partidos: [
+          { local: EQUIPOS_IDS.BOCA, visita: EQUIPOS_IDS.PALMERAS, gl: 3, gv: 0 },
+          { local: EQUIPOS_IDS.PARQUE, visita: EQUIPOS_IDS.FLAMENGO, gl: 2, gv: 1 },
+          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.SAMAN_CHICO, gl: 1, gv: 0 },
+          { local: EQUIPOS_IDS.VENCEDORES, visita: EQUIPOS_IDS.PANAMERICANA, gl: 0, gv: 2 },
+          { local: EQUIPOS_IDS.SAN_MARTIN, visita: EQUIPOS_IDS.SANTA_ROSA, gl: 0, gv: 0 },
+        ]
+      },
     ];
     const Jugadores = {
       ato_ronal: 'Ato Nole Ronal Omar',
@@ -855,6 +867,12 @@
       gonzales_jesus: 'Gonzales Suldarriaga Jesus',
       reto_ronald: 'Reto Tavara Ronald',
       silva_calderon_luis: 'Silva Calderón Luis',
+      zegarra_moises: 'Zegarra Alvares Moises',
+      saavedra_jhosmer: 'Saavedra Escobar Jhosmer',
+      mendoza_maykol: 'Mendoza Montalvo Maykol',
+      solano_juan: 'Solano Vidaurre Juan',
+      atoche_arian: 'Atoche Heredia Arian',
+      farias_santos: 'Farias Urbina Santos',
     }
     // ── 3. GOLEADORES ─────────────────────────────────────────────────────────
     // Agrega un objeto por jugador. Actualiza `goles` cada fecha.
@@ -890,17 +908,24 @@
       { nombre: Jugadores.gonzales_jesus, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 2 },
       { nombre: Jugadores.reto_ronald, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 1 },
       { nombre: Jugadores.silva_calderon_luis, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 1 },
+      // Fecha 5 — 14 de junio
+      { nombre: Jugadores.zegarra_moises, equipo: EQUIPOS_IDS.BOCA, goles: 2 },
+      { nombre: Jugadores.saavedra_jhosmer, equipo: EQUIPOS_IDS.BOCA, goles: 1 },
+      { nombre: Jugadores.mendoza_maykol, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
+      { nombre: Jugadores.solano_juan, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
+      { nombre: Jugadores.atoche_arian, equipo: EQUIPOS_IDS.FLAMENGO, goles: 1 },
+      { nombre: Jugadores.farias_santos, equipo: EQUIPOS_IDS.PLAZA, goles: 1 },
     ];
 
     // ── 4. TARJETAS ───────────────────────────────────────────────────────────
     const TARJETAS = [
-      { equipo: EQUIPOS_IDS.SANTA_ROSA, amarillas: (2+1+1), rojas: 0 },
+      { equipo: EQUIPOS_IDS.SANTA_ROSA, amarillas: (2+1+1+1), rojas: 0 },
       { equipo: EQUIPOS_IDS.PLAZA, amarillas: (2+1), rojas: 0 },
       { equipo: EQUIPOS_IDS.SAMAN_CHICO, amarillas: (2+1+2+2), rojas: 0 },
       { equipo: EQUIPOS_IDS.PALMERAS, amarillas: (1+2+0), rojas: 0 },
-      { equipo: EQUIPOS_IDS.VENCEDORES, amarillas: (2+2+1), rojas: 0 },
-      { equipo: EQUIPOS_IDS.SAN_MARTIN, amarillas: (5+1+2), rojas: 1 },
-      { equipo: EQUIPOS_IDS.PANAMERICANA, amarillas: (0+1+1), rojas: 0 },
+      { equipo: EQUIPOS_IDS.VENCEDORES, amarillas: (2+2+1), rojas: 1 },
+      { equipo: EQUIPOS_IDS.SAN_MARTIN, amarillas: (5+1+2+1), rojas: (1+1) },
+      { equipo: EQUIPOS_IDS.PANAMERICANA, amarillas: (0+1+1), rojas: 1 },
       { equipo: EQUIPOS_IDS.POSTA, amarillas: (0+1+1+2), rojas: 0 },
       { equipo: EQUIPOS_IDS.BOCA, amarillas: (0+1), rojas: 0 },
       { equipo: EQUIPOS_IDS.FLAMENGO, amarillas: (1+1), rojas: 0 },
