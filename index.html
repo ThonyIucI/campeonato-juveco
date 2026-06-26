@@ -394,6 +394,8 @@
     /* ── RESULTADOS ── */
     .fecha-block {
       margin-bottom: 28px;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .fecha-header {
@@ -613,6 +615,156 @@
 
     .c-dot-r {
       background: #ef4444;
+    }
+
+    /* ── COLAPSABLE TARJETAS POR EQUIPO ── */
+    .card-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-item-click {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .card-toggle {
+      font-size: 12px;
+      color: var(--gray);
+      transition: transform .2s;
+      flex-shrink: 0;
+      width: 12px;
+      text-align: center;
+    }
+
+    .card-item-click.open .card-toggle {
+      transform: rotate(90deg);
+      color: var(--gold);
+    }
+
+    .card-detalle {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--navy-mid);
+      padding: 4px 16px 8px;
+      margin-top: 6px;
+    }
+
+    .card-detalle[hidden] {
+      display: none;
+    }
+
+    .cd-fecha {
+      padding: 8px 0;
+    }
+
+    .cd-fecha + .cd-fecha {
+      border-top: 1px dashed var(--border);
+    }
+
+    .cd-fecha-hd {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .jt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 3px 0;
+    }
+
+    .jt-nombre {
+      font-size: 14px;
+    }
+
+    .jt-cards {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── COLAPSABLE TARJETAS POR PARTIDO ── */
+    .p-mid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .p-cards-hint {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .partido-click {
+      cursor: pointer;
+    }
+
+    .partido-click.open {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .partido-detalle {
+      border: 1px solid var(--border);
+      border-top: none;
+      background: var(--navy-mid);
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 14px;
+      padding: 12px 20px;
+    }
+
+    .partido-detalle[hidden] {
+      display: none;
+    }
+
+    .pd-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .pd-col-left {
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .pd-col-right {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .pd-col-sep {
+      background: var(--border);
+    }
+
+    .pd-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .pd-col-left .pd-row {
+      flex-direction: row-reverse;
+    }
+
+    .pd-empty {
+      color: var(--gray);
+      font-size: 13px;
     }
 
     /* ── PORTEROS ── */
@@ -860,7 +1012,6 @@
       villegas_efrain: 'Villegas Saldarriaga Efraín',
       cesar_mena_r:'Mena Riofrío Cesar Paul',
       harold_palomino:'Palomino Silva Harold',
-      leandro_saldarriaga:'Saldarriaga Silva Leandro',
       darwin_gonzalez:'Gonzalez García Darwin',
       marco_garrido:'Garrido Caldeŕon Marco',
       victor_gonzales:'Gonzales Ordinola Victor L.',
@@ -894,6 +1045,60 @@
       saldarriaga_diego: 'Saldarriaga Marcelo Diego',
       mauricio_jesus: 'Mauricio Obleo Jesus',
       chero_andres: 'Chero Silva Andres',
+      // ── Jugadores con tarjetas (fuente: compendio de tarjetas.md) ──
+      // Samán Chico
+      sandoval_paul: 'Sandoval Palacios Paul',
+      mena_garcia_cesar: 'Mena Garcia Cesar',
+      ortono_jesus: 'Ortoño Juarez Jesus',
+      correo_yordin: 'Correa Pezantes Yordin',
+      // Flamengo
+      calderon_seven: 'Calderon Gonzales Seven',
+      gonzales_jonathan: 'Gonzales Garcia Jonathan',
+      andrade_darwin: 'Andrade Silva Darwin',
+      rivera_ernesto: 'Rivera Silva Ernesto',
+      vargas_edwar: 'Vargas Calderon Edwar',
+      // Boca Junior
+      more_german: 'More Gonzales German',
+      farias_jhonatan: 'Farias Castro Jhonatan',
+      // Posta
+      farias_alex: 'Farias Yacila Alex',
+      yacila_bernardo: 'Yacila Torres Bernardo',
+      // Santa Rosa
+      calderon_carlos: 'Calderon Ortiz Carlos',
+      ruiz_juancarlos: 'Ruiz Silva Juan Carlos',
+      calderon_junior: 'Calderon Vargas Junior',
+      // Plaza
+      farias_michael: 'Farias Villarreyes Michael',
+      // Vencedores
+      castro_alex: 'Castro Urbina Alex',
+      aguilar_snaider: 'Aguilar Urbina Snaider',
+      delrosario_kevin: 'Del Rosario Castro Kevin',
+      farias_cesar: 'Farias Urbina Cesar',
+      escobar_anthony: 'Escobar Burgos Anthony',
+      urbina_miguel: 'Urbina Silva Miguel',
+      urbina_maicol: 'Urbina Zegarra Maicol',
+      urbina_luis: 'Urbina Oblea Luis',
+      // Parque
+      torres_halisson: 'Torres Marchena Halisson',
+      pardo_jose: 'Pardo Guerrero Jose',
+      // Palmeras
+      rodrigues_jesus: 'Rodrigues Andrade Jesus',
+      andrade_jose: 'Andrade Valverde Jose',
+      saavedra_kevin: 'Saavedra Ipanaque Kevin',
+      ruiz_dennis: 'Ruiz Alburquerque Dennis',
+      ipanaque_elmer: 'Ipanaque Suarez Elmer',
+      // Panamericana - Golondrina
+      ordones_anderson: 'Ordoñes Palomino Anderson',
+      elias_iker: 'Elias Urbina Iker',
+      blume_aron: 'Blume Gonzales Aron',
+      arrese_diego: 'Arrese Floreano Diego',
+      // San Martín - Golondrina
+      leandro_saldarriaga: 'Saldarriaga Silva Leandro',
+      oblea_edil: 'Oblea Castro Edil',
+      arellano_marco: 'Arellano Sarnaque Marco',
+      prado_antony: 'Prado Saldarriaga Antony Junior',
+      saldarriaga_kevin: 'Saldarriaga Silva Kevin',
+      albujar_jhonrdy: 'Albujar Saldarriaga Jhonrdy',
     }
     // ── 3. GOLEADORES ─────────────────────────────────────────────────────────
     // Agrega un objeto por jugador. Actualiza `goles` cada fecha.
@@ -950,19 +1155,97 @@
     ];
 
     // ── 4. TARJETAS ───────────────────────────────────────────────────────────
-    const TARJETAS = [
-      { equipo: EQUIPOS_IDS.SANTA_ROSA, amarillas: (2+1+1+1), rojas: 1 },
-      { equipo: EQUIPOS_IDS.PLAZA, amarillas: (2+1+2), rojas: 0 },
-      { equipo: EQUIPOS_IDS.SAMAN_CHICO, amarillas: (2+1+2+2), rojas: 0 },
-      { equipo: EQUIPOS_IDS.PALMERAS, amarillas: (1+2+0+1), rojas: 0 },
-      { equipo: EQUIPOS_IDS.VENCEDORES, amarillas: (2+2+1+2), rojas: 1 },
-      { equipo: EQUIPOS_IDS.SAN_MARTIN, amarillas: (5+1+2+1+2), rojas: (1+1) },
-      { equipo: EQUIPOS_IDS.PANAMERICANA, amarillas: (0+1+1), rojas: 1 },
-      { equipo: EQUIPOS_IDS.POSTA, amarillas: (0+1+1+2), rojas: 0 },
-      { equipo: EQUIPOS_IDS.BOCA, amarillas: (0+1+1), rojas: 0 },
-      { equipo: EQUIPOS_IDS.FLAMENGO, amarillas: (1+1+5), rojas: 0 },
-      { equipo: EQUIPOS_IDS.PARQUE, amarillas: (0+1), rojas: 0 },
+    // FUENTE ÚNICA DE VERDAD: detalle por jugador y fecha (compendio de tarjetas.md).
+    // a = amarillas, r = rojas en esa fecha. Los totales por equipo se derivan abajo.
+    const TARJETAS_DETALLE = [
+      // ── Samán Chico ──
+      { fecha: 1, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.sandoval_paul, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.victor_gonzales, a: 1, r: 0 },
+      { fecha: 2, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.victor_gonzales, a: 1, r: 0 },
+      { fecha: 3, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.mena_garcia_cesar, a: 1, r: 0 },
+      { fecha: 3, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.ortono_jesus, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.ortono_jesus, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.correo_yordin, a: 1, r: 0 },
+      // ── Flamengo ──
+      { fecha: 3, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.calderon_seven, a: 1, r: 0 },
+      { fecha: 3, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.gonzales_jonathan, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.andrade_darwin, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.atoche_eddi, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.rivera_ernesto, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.vargas_edwar, a: 1, r: 0 },
+      // ── Boca Junior ──
+      { fecha: 2, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.more_german, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.zegarra_wilmer, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.farias_jhonatan, a: 1, r: 0 },
+      // ── Posta ──
+      { fecha: 2, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.ortiz_jayro, a: 1, r: 0 },
+      { fecha: 3, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.farias_alex, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.yacila_bernardo, a: 1, r: 0 },
+      // ── Santa Rosa ──
+      { fecha: 1, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.silva_calderon_luis, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.calderon_carlos, a: 1, r: 0 },
+      { fecha: 2, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.ruiz_juancarlos, a: 1, r: 0 },
+      { fecha: 3, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.calderon_junior, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.reto_ronald, a: 1, r: 0 },
+      { fecha: 5, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.silva_calderon_luis, a: 0, r: 1 },
+      // ── Plaza ──
+      { fecha: 1, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.socola_harry, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.mena_anderson, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_michael, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_jeremy, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_michael, a: 1, r: 0 },
+      // ── Vencedores ──
+      { fecha: 1, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.castro_alex, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.aguilar_snaider, a: 1, r: 0 },
+      { fecha: 3, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.delrosario_kevin, a: 1, r: 0 },
+      { fecha: 3, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.farias_cesar, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.escobar_anthony, a: 1, r: 0 },
+      { fecha: 5, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.urbina_miguel, a: 1, r: 0 },
+      { fecha: 5, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.castro_alex, a: 0, r: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.urbina_maicol, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.urbina_luis, a: 1, r: 0 },
+      // ── Parque ──
+      { fecha: 5, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.torres_halisson, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.pardo_jose, a: 1, r: 0 },
+      // ── Palmeras ──
+      { fecha: 1, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.rodrigues_jesus, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.atoche_anthony, a: 1, r: 0 },
+      { fecha: 2, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.andrade_jose, a: 1, r: 0 },
+      { fecha: 2, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.saavedra_kevin, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.ruiz_dennis, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.ipanaque_elmer, a: 1, r: 0 },
+      // ── Panamericana - Golondrina ──
+      { fecha: 2, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.calet_gonzales, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.ordones_anderson, a: 1, r: 0 },
+      { fecha: 5, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.elias_iker, a: 1, r: 0 },
+      { fecha: 5, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.blume_aron, a: 0, r: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.arrese_diego, a: 1, r: 0 },
+      // ── San Martín - Golondrina ──
+      { fecha: 1, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.leandro_saldarriaga, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.oblea_edil, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.arellano_marco, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.prado_antony, a: 1, r: 0 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.saldarriaga_diego, a: 1, r: 0 },
+      { fecha: 3, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.saldarriaga_kevin, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.leandro_saldarriaga, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.mauricio_jesus, a: 1, r: 0 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.saldarriaga_diego, a: 0, r: 1 },
+      { fecha: 5, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.albujar_jhonrdy, a: 1, r: 0 },
+      { fecha: 5, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.prado_antony, a: 0, r: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.saldarriaga_diego, a: 1, r: 0 },
+      { fecha: 6, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.mauricio_jesus, a: 1, r: 0 },
     ];
+
+    // Totales por equipo derivados del detalle (no editar a mano).
+    const TARJETAS = (() => {
+      const map = {};
+      TARJETAS_DETALLE.forEach(d => {
+        if (!map[d.equipo]) map[d.equipo] = { equipo: d.equipo, amarillas: 0, rojas: 0 };
+        map[d.equipo].amarillas += d.a || 0;
+        map[d.equipo].rojas += d.r || 0;
+      });
+      return Object.values(map);
+    })();
 
     // ── 5. VALLA INVICTA (porteros / equipos con menos goles en contra) ────────
     const VALLA_INVICTA = [
@@ -1082,6 +1365,38 @@
       return e ? e.alias : id;
     }
 
+    // ── Helpers de tarjetas ───────────────────────────────────────────────────────
+    function tarjetasDeEquipoFecha(equipoId, numeroFecha) {
+      return TARJETAS_DETALLE.filter(d => d.equipo === equipoId && d.fecha === numeroFecha);
+    }
+
+    function badgesTarjeta(d) {
+      let s = '';
+      if (d.a) s += `<span class="c-badge"><span class="c-dot c-dot-y"></span> ${d.a}</span>`;
+      if (d.r) s += `<span class="c-badge"><span class="c-dot c-dot-r"></span> ${d.r}</span>`;
+      return s;
+    }
+
+    // Columna de jugadores con tarjetas (vista Resultados, por partido)
+    function columnaTarjetas(lista) {
+      if (!lista.length) return '<div class="pd-empty">—</div>';
+      return lista.map(d => `<div class="pd-row"><span>${d.jugador}</span>${badgesTarjeta(d)}</div>`).join('');
+    }
+
+    // Detalle por fecha de un equipo (vista Tarjetas, colapsable)
+    function detalleTarjetasEquipo(equipoId) {
+      const items = TARJETAS_DETALLE.filter(d => d.equipo === equipoId);
+      const fechas = [...new Set(items.map(d => d.fecha))].sort((a, b) => b - a);
+      return fechas.map(f => {
+        const jugadores = items.filter(d => d.fecha === f).map(d => `
+        <div class="jt-row">
+          <span class="jt-nombre">${d.jugador}</span>
+          <span class="jt-cards">${badgesTarjeta(d)}</span>
+        </div>`).join('');
+        return `<div class="cd-fecha"><div class="cd-fecha-hd">Fecha ${f}</div>${jugadores}</div>`;
+      }).join('');
+    }
+
     // ── Calcular posiciones ───────────────────────────────────────────────────────
     function calcPosiciones() {
       const stats = {};
@@ -1157,16 +1472,35 @@
       }
 
       [...FECHAS].reverse().forEach(f => {
-        let partidos = f.partidos.map(par => {
+        let partidos = f.partidos.map((par, idx) => {
           const score = par.gl !== null
             ? `<div class="p-score"><span>${par.gl}</span><span class="p-score-sep">–</span><span>${par.gv}</span></div>`
             : `<div class="p-pending">Por jugar</div>`;
+
+          const locC = tarjetasDeEquipoFecha(par.local, f.numero);
+          const visC = tarjetasDeEquipoFecha(par.visita, f.numero);
+          const hayTarjetas = locC.length || visC.length;
+          const detId = `pd-${f.numero}-${idx}`;
+
+          const hint = hayTarjetas
+            ? `<div class="p-cards-hint"><span class="c-dot c-dot-y" style="width:9px;height:13px"></span> tarjetas</div>`
+            : '';
+
+          const detalle = hayTarjetas
+            ? `
+        <div class="partido-detalle" id="${detId}" hidden>
+          <div class="pd-col pd-col-left">${columnaTarjetas(locC)}</div>
+          <div class="pd-col-sep"></div>
+          <div class="pd-col pd-col-right">${columnaTarjetas(visC)}</div>
+        </div>`
+            : '';
+
           return `
-        <div class="partido-card">
+        <div class="partido-card ${hayTarjetas ? 'partido-click' : ''}" ${hayTarjetas ? `data-target="${detId}"` : ''}>
           <div class="p-team p-team-left">${nombreEquipo(par.local)}</div>
-          ${score}
+          <div class="p-mid">${score}${hint}</div>
           <div class="p-team p-team-right">${nombreEquipo(par.visita)}</div>
-        </div>`;
+        </div>${detalle}`;
         }).join('');
 
         c.innerHTML += `
@@ -1218,14 +1552,18 @@
       }
 
       list.innerHTML = sorted.map(t => `
-    <div class="card-item">
-      <div class="card-info">
-        <div class="card-nombre">${nombreEquipo(t.equipo)}</div>
+    <div class="card-group">
+      <div class="card-item card-item-click" data-target="cd-${t.equipo}">
+        <span class="card-toggle">▸</span>
+        <div class="card-info">
+          <div class="card-nombre">${nombreEquipo(t.equipo)}</div>
+        </div>
+        <div class="card-counts">
+          <span class="c-badge"><span class="c-dot c-dot-y"></span> ${t.amarillas}</span>
+          <span class="c-badge"><span class="c-dot c-dot-r"></span> ${t.rojas}</span>
+        </div>
       </div>
-      <div class="card-counts">
-        <span class="c-badge"><span class="c-dot c-dot-y"></span> ${t.amarillas}</span>
-        <span class="c-badge"><span class="c-dot c-dot-r"></span> ${t.rojas}</span>
-      </div>
+      <div class="card-detalle" id="cd-${t.equipo}" hidden>${detalleTarjetasEquipo(t.equipo)}</div>
     </div>`).join('');
     }
 
@@ -1315,6 +1653,24 @@
         btn.classList.add('active');
         document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
       });
+    });
+
+    // ── Colapsables de tarjetas (delegación de eventos) ────────────────────────────
+    function toggleDetalle(trigger) {
+      const det = document.getElementById(trigger.dataset.target);
+      if (!det) return;
+      det.hidden = !det.hidden;
+      trigger.classList.toggle('open');
+    }
+
+    document.getElementById('resultados-container').addEventListener('click', e => {
+      const card = e.target.closest('.partido-click');
+      if (card) toggleDetalle(card);
+    });
+
+    document.getElementById('card-list').addEventListener('click', e => {
+      const item = e.target.closest('.card-item-click');
+      if (item) toggleDetalle(item);
     });
 
     // ── INIT ──────────────────────────────────────────────────────────────────────
