@@ -637,9 +637,40 @@
       text-align: center;
     }
 
-    .card-item-click.open .card-toggle {
+    .card-item-click.open .card-toggle,
+    .gol-item-click.open .card-toggle {
       transform: rotate(90deg);
       color: var(--gold);
+    }
+
+    /* ── COLAPSABLE GOLEADORES ── */
+    .gol-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gol-item-click {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .g-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--gold);
+    }
+
+    .g-ball {
+      font-size: 12px;
+    }
+
+    .pd-row-gol {
+      color: var(--gold);
+      font-weight: 600;
     }
 
     .card-detalle {
@@ -1025,7 +1056,7 @@
       cesar_mena_r:'Mena Riofrío Cesar Paul',
       harold_palomino:'Palomino Silva Harold',
       darwin_gonzalez:'Gonzalez García Darwin',
-      marco_garrido:'Garrido Caldeŕon Marco',
+      marco_garrido:'Garrido Calderón Marco',
       victor_gonzales:'Gonzales Ordinola Victor L.',
       socola_harry: 'Socola Saldarriaga Harry',
       ruiz_edwin: 'Ruiz Saldarriaga Edwin',
@@ -1119,70 +1150,104 @@
       benites_angel: 'Benites Farias Angel',
       rodriguez_fredy: 'Rodriguez Macalupu Fredy',
       atoche_jhon: 'Atoche Castro Jhon Antony',
-      gonzales_darwin: 'Gonzales Garcia Darwin',
     }
     // ── 3. GOLEADORES ─────────────────────────────────────────────────────────
-    // Agrega un objeto por jugador. Actualiza `goles` cada fecha.
-    const GOLEADORES = [
-      { nombre: Jugadores.ato_ronal, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
-      { nombre: Jugadores.silva, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: (1+1) },
-      { nombre: Jugadores.atoche_marlon, equipo: EQUIPOS_IDS.FLAMENGO, goles: 1 },
-      { nombre: Jugadores.sandoval_edwin, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
-      { nombre: Jugadores.castro_angel, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
-      { nombre: Jugadores.atoche_anthony, equipo: EQUIPOS_IDS.PALMERAS, goles: (2+0+2+3+2) },
-      { nombre: Jugadores.rojas_carlos, equipo: EQUIPOS_IDS.PALMERAS, goles: 1 },
-      { nombre: Jugadores.aguilar_jheans, equipo: EQUIPOS_IDS.VENCEDORES, goles: 1 },
-      { nombre: Jugadores.villegas_efrain, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: (1+1) },
-      { nombre: Jugadores.cesar_mena_r, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
-      { nombre: Jugadores.harold_palomino, equipo: EQUIPOS_IDS.PANAMERICANA, goles: (2+1+1) },
-      { nombre: Jugadores.leandro_saldarriaga, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
-      { nombre: Jugadores.darwin_gonzalez, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: (1+0+1)},
-      { nombre: Jugadores.marco_garrido, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 1 },
-      { nombre: Jugadores.victor_gonzales, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
-      { nombre: Jugadores.socola_harry, equipo: EQUIPOS_IDS.PLAZA, goles: (1+1) },
-      { nombre: Jugadores.ruiz_edwin, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
-      { nombre: Jugadores.palomino_jorge, equipo: EQUIPOS_IDS.PANAMERICANA, goles: (1+1) },
-      { nombre: Jugadores.atoche_eddi, equipo: EQUIPOS_IDS.FLAMENGO, goles: (2+2) },
-      { nombre: Jugadores.nole_david, equipo: EQUIPOS_IDS.PARQUE, goles: (1+1) },
-      { nombre: Jugadores.chero_luis, equipo: EQUIPOS_IDS.VENCEDORES, goles: 2 },
-      { nombre: Jugadores.denis_urbina, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
-      { nombre: Jugadores.farias_andy, equipo: EQUIPOS_IDS.POSTA, goles: 1 },
-      // Fecha 4 — 31 de mayo
-      { nombre: Jugadores.villegas_eswin, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
-      { nombre: Jugadores.mena_anderson, equipo: EQUIPOS_IDS.PLAZA, goles: (1+1+1) },
-      { nombre: Jugadores.castillo_jorge, equipo: EQUIPOS_IDS.PALMERAS, goles: 1 },
-      { nombre: Jugadores.calet_gonzales, equipo: EQUIPOS_IDS.PANAMERICANA, goles: 1 },
-      { nombre: Jugadores.gonzales_jesus, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 2 },
-      { nombre: Jugadores.reto_ronald, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 1 },
-      { nombre: Jugadores.silva_calderon_luis, equipo: EQUIPOS_IDS.SANTA_ROSA, goles: 1 },
-      // Fecha 5 — 14 de junio
-      { nombre: Jugadores.zegarra_moises, equipo: EQUIPOS_IDS.BOCA, goles: (2+1) },
-      { nombre: Jugadores.saavedra_jhosmer, equipo: EQUIPOS_IDS.BOCA, goles: 1 },
-      { nombre: Jugadores.mendoza_maykol, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
-      { nombre: Jugadores.solano_juan, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
-      { nombre: Jugadores.atoche_arian, equipo: EQUIPOS_IDS.FLAMENGO, goles: 1 },
-      { nombre: Jugadores.farias_santos, equipo: EQUIPOS_IDS.PLAZA, goles: (1+1) },
-      // Fecha 6 — 22 de junio
-      { nombre: Jugadores.aquino_eduard, equipo: EQUIPOS_IDS.FLAMENGO, goles: 1 },
-      { nombre: Jugadores.zegarra_wilmer, equipo: EQUIPOS_IDS.BOCA, goles: (1+1) },
-      { nombre: Jugadores.farias_jeremy, equipo: EQUIPOS_IDS.PLAZA, goles: (1+1) },
-      { nombre: Jugadores.ortiz_jayro, equipo: EQUIPOS_IDS.POSTA, goles: 1 },
-      { nombre: Jugadores.arica_pedro, equipo: EQUIPOS_IDS.POSTA, goles: 1 },
-      { nombre: Jugadores.urbina_isaac, equipo: EQUIPOS_IDS.VENCEDORES, goles: 1 },
-      { nombre: Jugadores.cesar_mena_r, equipo: EQUIPOS_IDS.VENCEDORES, goles: 1 },
-      { nombre: Jugadores.saldarriaga_diego, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
-      { nombre: Jugadores.mauricio_jesus, equipo: EQUIPOS_IDS.SAN_MARTIN, goles: 1 },
-      { nombre: Jugadores.chero_andres, equipo: EQUIPOS_IDS.PANAMERICANA, goles: 1 },
-      // Fecha 7 — 28 de junio
-      { nombre: Jugadores.torres_halisson, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
-      { nombre: Jugadores.ato_ariel, equipo: EQUIPOS_IDS.PARQUE, goles: 1 },
-      { nombre: Jugadores.yacila_neymar, equipo: EQUIPOS_IDS.BOCA, goles: 1 },
-      { nombre: Jugadores.farias_jhonatan, equipo: EQUIPOS_IDS.BOCA, goles: 1 },
-      { nombre: Jugadores.ordinola_jose, equipo: EQUIPOS_IDS.BOCA, goles: 1 },
-      { nombre: Jugadores.sandoval_paul, equipo: EQUIPOS_IDS.SAMAN_CHICO, goles: 1 },
-      { nombre: Jugadores.arrese_diego, equipo: EQUIPOS_IDS.PANAMERICANA, goles: 1 },
-      { nombre: Jugadores.ordinola_darly, equipo: EQUIPOS_IDS.POSTA, goles: 1 },
+    // FUENTE ÚNICA DE VERDAD: detalle por jugador y fecha (archivos fecha_N.md).
+    // Una fila por jugador que marcó en una fecha. Los totales se derivan abajo.
+    const GOLEADORES_DETALLE = [
+      // ── Fecha 1 — 01 de mayo ──
+      { fecha: 1, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.ato_ronal, goles: 1 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.silva, goles: 1 },
+      { fecha: 1, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.atoche_marlon, goles: 1 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.sandoval_edwin, goles: 1 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.castro_angel, goles: 1 },
+      { fecha: 1, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.atoche_anthony, goles: 2 },
+      { fecha: 1, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.rojas_carlos, goles: 1 },
+      { fecha: 1, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.aguilar_jheans, goles: 1 },
+      { fecha: 1, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.villegas_efrain, goles: 1 },
+      // ── Fecha 2 — 17 de mayo ──
+      { fecha: 2, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.cesar_mena_r, goles: 1 },
+      { fecha: 2, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.harold_palomino, goles: 2 },
+      { fecha: 2, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.leandro_saldarriaga, goles: 1 },
+      { fecha: 2, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.darwin_gonzalez, goles: 1 },
+      { fecha: 2, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.marco_garrido, goles: 1 },
+      { fecha: 2, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.victor_gonzales, goles: 1 },
+      // ── Fecha 3 — 24 de mayo ──
+      { fecha: 3, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.socola_harry, goles: 1 },
+      { fecha: 3, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.ruiz_edwin, goles: 1 },
+      { fecha: 3, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.palomino_jorge, goles: 1 },
+      { fecha: 3, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.atoche_eddi, goles: 2 },
+      { fecha: 3, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.nole_david, goles: 1 },
+      { fecha: 3, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.silva, goles: 1 },
+      { fecha: 3, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.chero_luis, goles: 2 },
+      { fecha: 3, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.atoche_anthony, goles: 2 },
+      { fecha: 3, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.denis_urbina, goles: 1 },
+      { fecha: 3, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.darwin_gonzalez, goles: 1 },
+      { fecha: 3, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.farias_andy, goles: 1 },
+      // ── Fecha 4 — 31 de mayo ──
+      { fecha: 4, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.villegas_eswin, goles: 1 },
+      { fecha: 4, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.mena_anderson, goles: 1 },
+      { fecha: 4, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.castillo_jorge, goles: 1 },
+      { fecha: 4, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.palomino_jorge, goles: 1 },
+      { fecha: 4, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.calet_gonzales, goles: 1 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.gonzales_jesus, goles: 2 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.reto_ronald, goles: 1 },
+      { fecha: 4, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.silva_calderon_luis, goles: 1 },
+      // ── Fecha 5 — 14 de junio ──
+      { fecha: 5, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.zegarra_moises, goles: 2 },
+      { fecha: 5, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.saavedra_jhosmer, goles: 1 },
+      { fecha: 5, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.mendoza_maykol, goles: 1 },
+      { fecha: 5, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.solano_juan, goles: 1 },
+      { fecha: 5, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.atoche_arian, goles: 1 },
+      { fecha: 5, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_santos, goles: 1 },
+      { fecha: 5, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.palomino_jorge, goles: 1 },
+      { fecha: 5, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.arrese_diego, goles: 1 },
+      // ── Fecha 6 — 21 de junio ──
+      { fecha: 6, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.atoche_eddi, goles: 2 },
+      { fecha: 6, equipo: EQUIPOS_IDS.FLAMENGO, jugador: Jugadores.aquino_eduard, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.zegarra_wilmer, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.atoche_anthony, goles: 3 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.mena_anderson, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_jeremy, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_santos, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.socola_harry, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.ortiz_jayro, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.arica_pedro, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.urbina_isaac, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.cesar_mena_r, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.villegas_efrain, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.saldarriaga_diego, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.mauricio_jesus, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.harold_palomino, goles: 1 },
+      { fecha: 6, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.chero_andres, goles: 1 },
+      // ── Fecha 7 — 28 de junio ──
+      { fecha: 7, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.nole_david, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.torres_halisson, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.ato_ariel, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.PALMERAS, jugador: Jugadores.atoche_anthony, goles: 2 },
+      { fecha: 7, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.yacila_neymar, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.farias_jhonatan, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.zegarra_moises, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.ordinola_jose, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.zegarra_wilmer, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.sandoval_paul, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_jeremy, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.mena_anderson, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.harold_palomino, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.arrese_diego, goles: 1 },
+      { fecha: 7, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.ordinola_darly, goles: 1 },
     ];
+
+    // Totales por jugador derivados del detalle (no editar a mano).
+    const GOLEADORES = (() => {
+      const map = {};
+      GOLEADORES_DETALLE.forEach(d => {
+        const key = d.jugador + '|' + d.equipo;
+        if (!map[key]) map[key] = { nombre: d.jugador, equipo: d.equipo, goles: 0 };
+        map[key].goles += d.goles;
+      });
+      return Object.values(map);
+    })();
 
     // ── 4. TARJETAS ───────────────────────────────────────────────────────────
     // FUENTE ÚNICA DE VERDAD: detalle por jugador y fecha (compendio de tarjetas.md).
@@ -1275,7 +1340,7 @@
       { fecha: 7, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.socola_harry, a: 1, r: 0 },
       { fecha: 7, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.chero_andres, a: 1, r: 0 },
       { fecha: 7, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.atoche_jhon, a: 1, r: 0 },
-      { fecha: 7, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.gonzales_darwin, a: 1, r: 0 },
+      { fecha: 7, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.darwin_gonzalez, a: 1, r: 0 },
     ];
 
     // Totales por equipo derivados del detalle (no editar a mano).
@@ -1439,6 +1504,37 @@
       }).join('');
     }
 
+    // ── Helpers de goleadores ─────────────────────────────────────────────────────
+    function golesDeEquipoFecha(equipoId, numeroFecha) {
+      return GOLEADORES_DETALLE.filter(d => d.equipo === equipoId && d.fecha === numeroFecha);
+    }
+
+    function badgeGol(goles) {
+      return `<span class="g-badge">${goles} <span class="g-ball">⚽</span></span>`;
+    }
+
+    // Detalle por fecha de un goleador (vista Goleadores, colapsable)
+    function detalleGolesJugador(nombre, equipoId) {
+      const items = GOLEADORES_DETALLE
+        .filter(d => d.jugador === nombre && d.equipo === equipoId)
+        .sort((a, b) => b.fecha - a.fecha);
+      return items.map(d => `
+        <div class="jt-row">
+          <span class="jt-nombre">Fecha ${d.fecha}</span>
+          <span class="jt-cards">${badgeGol(d.goles)}</span>
+        </div>`).join('');
+    }
+
+    // Columna de un equipo en el desplegable del partido: goles primero, luego tarjetas
+    function columnaPartido(equipoId, numeroFecha) {
+      const goles = golesDeEquipoFecha(equipoId, numeroFecha);
+      const tarjetas = tarjetasDeEquipoFecha(equipoId, numeroFecha);
+      if (!goles.length && !tarjetas.length) return '<div class="pd-empty">—</div>';
+      const filasGol = goles.map(d => `<div class="pd-row pd-row-gol"><span>${d.jugador}</span>${badgeGol(d.goles)}</div>`).join('');
+      const filasTar = tarjetas.map(d => `<div class="pd-row"><span>${d.jugador}</span>${badgesTarjeta(d)}</div>`).join('');
+      return filasGol + filasTar;
+    }
+
     // ── Calcular posiciones ───────────────────────────────────────────────────────
     function calcPosiciones() {
       const stats = {};
@@ -1519,26 +1615,29 @@
             ? `<div class="p-score"><span>${par.gl}</span><span class="p-score-sep">–</span><span>${par.gv}</span></div>`
             : `<div class="p-pending">Por jugar</div>`;
 
-          const locC = tarjetasDeEquipoFecha(par.local, f.numero);
-          const visC = tarjetasDeEquipoFecha(par.visita, f.numero);
-          const hayTarjetas = locC.length || visC.length;
+          const hayDetalle = par.gl !== null && (
+            golesDeEquipoFecha(par.local, f.numero).length ||
+            golesDeEquipoFecha(par.visita, f.numero).length ||
+            tarjetasDeEquipoFecha(par.local, f.numero).length ||
+            tarjetasDeEquipoFecha(par.visita, f.numero).length
+          );
           const detId = `pd-${f.numero}-${idx}`;
 
-          const hint = hayTarjetas
-            ? `<div class="p-cards-hint"><span class="c-dot c-dot-y" style="width:9px;height:13px"></span> tarjetas</div>`
+          const hint = hayDetalle
+            ? `<div class="p-cards-hint">▾ detalle</div>`
             : '';
 
-          const detalle = hayTarjetas
+          const detalle = hayDetalle
             ? `
         <div class="partido-detalle" id="${detId}" hidden>
-          <div class="pd-col pd-col-left">${columnaTarjetas(locC)}</div>
+          <div class="pd-col pd-col-left">${columnaPartido(par.local, f.numero)}</div>
           <div class="pd-col-sep"></div>
-          <div class="pd-col pd-col-right">${columnaTarjetas(visC)}</div>
+          <div class="pd-col pd-col-right">${columnaPartido(par.visita, f.numero)}</div>
         </div>`
             : '';
 
           return `
-        <div class="partido-card ${hayTarjetas ? 'partido-click' : ''}" ${hayTarjetas ? `data-target="${detId}"` : ''}>
+        <div class="partido-card ${hayDetalle ? 'partido-click' : ''}" ${hayDetalle ? `data-target="${detId}"` : ''}>
           <div class="p-team p-team-left">${nombreEquipo(par.local)}</div>
           <div class="p-mid">${score}${hint}</div>
           <div class="p-team p-team-right">${nombreEquipo(par.visita)}</div>
@@ -1569,16 +1668,20 @@
       list.innerHTML = sorted.map((g, i) => {
         const top = i < 3 ? 'top' : '';
         return `
-      <div class="gol-item">
-        <span class="gol-rank ${top}">${i + 1}</span>
-        <div class="gol-info">
-          <div class="gol-nombre">${g.nombre}</div>
-          <div class="gol-equipo">${nombreEquipo(g.equipo)}</div>
+      <div class="gol-group">
+        <div class="gol-item gol-item-click" data-target="gd-${i}">
+          <span class="card-toggle">▸</span>
+          <span class="gol-rank ${top}">${i + 1}</span>
+          <div class="gol-info">
+            <div class="gol-nombre">${g.nombre}</div>
+            <div class="gol-equipo">${nombreEquipo(g.equipo)}</div>
+          </div>
+          <div class="gol-count">
+            <span class="gol-icon">⚽</span>
+            ${g.goles}
+          </div>
         </div>
-        <div class="gol-count">
-          <span class="gol-icon">⚽</span>
-          ${g.goles}
-        </div>
+        <div class="card-detalle" id="gd-${i}" hidden>${detalleGolesJugador(g.nombre, g.equipo)}</div>
       </div>`;
       }).join('');
     }
@@ -1712,6 +1815,11 @@
 
     document.getElementById('card-list').addEventListener('click', e => {
       const item = e.target.closest('.card-item-click');
+      if (item) toggleDetalle(item);
+    });
+
+    document.getElementById('gol-list').addEventListener('click', e => {
+      const item = e.target.closest('.gol-item-click');
       if (item) toggleDetalle(item);
     });
 
