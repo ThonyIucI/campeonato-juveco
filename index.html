@@ -1357,7 +1357,7 @@
       { fecha: 3, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.farias_cesar, a: 1, r: 0 },
       { fecha: 4, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.escobar_anthony, a: 1, r: 0 },
       { fecha: 5, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.urbina_miguel, a: 1, r: 0 },
-      { fecha: 5, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.castro_alex, a: 0, r: 1 },
+      { fecha: 5, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.castro_alex, a: 0, r: 1, vigente: true }, // roja hasta fin del campeonato
       { fecha: 6, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.urbina_maicol, a: 1, r: 0 },
       { fecha: 6, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.urbina_luis, a: 1, r: 0 },
       // ── Parque ──
@@ -1560,7 +1560,7 @@
       let s = '';
       if (d.a) s += `<span class="c-badge"><span class="c-dot c-dot-y"></span> ${d.a}</span>`;
       if (d.r) {
-        const vencida = rojaVencida(d.fecha);
+        const vencida = rojaVencida(d.fecha) && !d.vigente;
         const badgeCls = vencida ? 'c-badge c-badge-vencida' : 'c-badge';
         const dotCls = vencida ? 'c-dot c-dot-r c-dot-r-vencida' : 'c-dot c-dot-r';
         const title = vencida ? ' title="Amonestación cumplida"' : '';
