@@ -617,6 +617,16 @@
       background: #ef4444;
     }
 
+    /* Roja que ya cumplió su amonestación: se muestra en blanco (solo detalle por jugador) */
+    .c-dot-r-vencida {
+      background: #fff;
+      border: 1px solid #d1d5db;
+    }
+
+    .c-badge-vencida {
+      opacity: 0.75;
+    }
+
     /* ── COLAPSABLE TARJETAS POR EQUIPO ── */
     .card-group {
       display: flex;
@@ -1042,6 +1052,30 @@
           { local: EQUIPOS_IDS.PANAMERICANA, visita: EQUIPOS_IDS.POSTA, gl: 2, gv: 1 },
         ]
       },
+      // ── FECHA 8 (05 de julio) ──
+      {
+        numero: 8,
+        fecha: '05 de julio 2026',
+        partidos: [
+          { local: EQUIPOS_IDS.VENCEDORES, visita: EQUIPOS_IDS.BOCA, gl: 1, gv: 1 },
+          { local: EQUIPOS_IDS.SANTA_ROSA, visita: EQUIPOS_IDS.PALMERAS, gl: 3, gv: 0 },
+          { local: EQUIPOS_IDS.POSTA, visita: EQUIPOS_IDS.SAN_MARTIN, gl: 0, gv: 3 },
+          { local: EQUIPOS_IDS.SAMAN_CHICO, visita: EQUIPOS_IDS.PARQUE, gl: 1, gv: 2 },
+          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.PANAMERICANA, gl: 3, gv: 2 },
+        ]
+      },
+      // ── FECHA 9 (12 de julio) — por jugar ──
+      {
+        numero: 9,
+        fecha: '12 de julio 2026',
+        partidos: [
+          { local: EQUIPOS_IDS.SAN_MARTIN, visita: EQUIPOS_IDS.FLAMENGO, gl: null, gv: null },
+          { local: EQUIPOS_IDS.SANTA_ROSA, visita: EQUIPOS_IDS.SAMAN_CHICO, gl: null, gv: null },
+          { local: EQUIPOS_IDS.PARQUE, visita: EQUIPOS_IDS.VENCEDORES, gl: null, gv: null },
+          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.POSTA, gl: null, gv: null },
+          { local: EQUIPOS_IDS.BOCA, visita: EQUIPOS_IDS.PANAMERICANA, gl: null, gv: null },
+        ]
+      },
     ];
     const Jugadores = {
       ato_ronal: 'Ato Nole Ronal Omar',
@@ -1150,6 +1184,19 @@
       benites_angel: 'Benites Farias Angel',
       rodriguez_fredy: 'Rodriguez Macalupu Fredy',
       atoche_jhon: 'Atoche Castro Jhon Antony',
+      // ── Fecha 8 — 05 de julio ──
+      urbina_yordy: 'Urbina Zegarra Yordy',
+      castro_jose: 'Castro Urbina Jose',
+      saavedra_ever: 'Saavedra Escobar Ever',
+      saldarriaga_hirwin: 'Saldarriaga Silva Hirwin',
+      roque_yoel: 'Roque Valdez Eswig Yoel',
+      boulanger_dilmer: 'Boulanger Agurto Dilmer',
+      estrada_jilmer: 'Estrada Nole Jilmer',
+      farias_luis: 'Farias Burgos Luis',
+      escobar_jefferson: 'Escobar Mauricio Jefferson',
+      gonzales_julio: 'Gonzales Ordinola Julio',
+      silva_marlon: 'Silva Calderón Marlon',
+      garcia_anthony: 'Garcia Risco Anthony',
     }
     // ── 3. GOLEADORES ─────────────────────────────────────────────────────────
     // FUENTE ÚNICA DE VERDAD: detalle por jugador y fecha (archivos fecha_N.md).
@@ -1236,6 +1283,20 @@
       { fecha: 7, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.harold_palomino, goles: 1 },
       { fecha: 7, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.arrese_diego, goles: 1 },
       { fecha: 7, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.ordinola_darly, goles: 1 },
+      // ── Fecha 8 — 05 de julio ──
+      { fecha: 8, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.urbina_yordy, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.saavedra_ever, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.silva, goles: 3 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.saldarriaga_hirwin, goles: 2 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.roque_yoel, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.boulanger_dilmer, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.estrada_jilmer, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.mendoza_maykol, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_luis, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.socola_harry, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.mena_anderson, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.palomino_jorge, goles: 1 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.blume_aron, goles: 1 },
     ];
 
     // Totales por jugador derivados del detalle (no editar a mano).
@@ -1341,6 +1402,19 @@
       { fecha: 7, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.chero_andres, a: 1, r: 0 },
       { fecha: 7, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.atoche_jhon, a: 1, r: 0 },
       { fecha: 7, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.darwin_gonzalez, a: 1, r: 0 },
+      // ── Fecha 8 — 05 de julio (todas amarillas) ──
+      { fecha: 8, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.castro_jose, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.farias_jhonatan, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.zegarra_wilmer, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.escobar_jefferson, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.saldarriaga_diego, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.ruiz_edwin, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.sandoval_edwin, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.gonzales_julio, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.castro_angel, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.silva_marlon, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.garcia_anthony, a: 1, r: 0 },
+      { fecha: 8, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.blume_aron, a: 1, r: 0 },
     ];
 
     // Totales por equipo derivados del detalle (no editar a mano).
@@ -1477,10 +1551,21 @@
       return TARJETAS_DETALLE.filter(d => d.equipo === equipoId && d.fecha === numeroFecha);
     }
 
+    // Las rojas de fechas ANTERIORES a esta ya cumplieron su amonestación.
+    // En el detalle por jugador se muestran en blanco. Subir este número cada fecha.
+    const FECHA_ROJA_VIGENTE_DESDE = 7;
+    const rojaVencida = (fecha) => fecha < FECHA_ROJA_VIGENTE_DESDE;
+
     function badgesTarjeta(d) {
       let s = '';
       if (d.a) s += `<span class="c-badge"><span class="c-dot c-dot-y"></span> ${d.a}</span>`;
-      if (d.r) s += `<span class="c-badge"><span class="c-dot c-dot-r"></span> ${d.r}</span>`;
+      if (d.r) {
+        const vencida = rojaVencida(d.fecha);
+        const badgeCls = vencida ? 'c-badge c-badge-vencida' : 'c-badge';
+        const dotCls = vencida ? 'c-dot c-dot-r c-dot-r-vencida' : 'c-dot c-dot-r';
+        const title = vencida ? ' title="Amonestación cumplida"' : '';
+        s += `<span class="${badgeCls}"${title}><span class="${dotCls}"></span> ${d.r}</span>`;
+      }
       return s;
     }
 
