@@ -1064,16 +1064,28 @@
           { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.PANAMERICANA, gl: 3, gv: 2 },
         ]
       },
-      // ── FECHA 9 (12 de julio) — por jugar ──
+      // ── FECHA 9 (12 de julio) ──
       {
         numero: 9,
         fecha: '12 de julio 2026',
         partidos: [
-          { local: EQUIPOS_IDS.SAN_MARTIN, visita: EQUIPOS_IDS.FLAMENGO, gl: null, gv: null },
-          { local: EQUIPOS_IDS.SANTA_ROSA, visita: EQUIPOS_IDS.SAMAN_CHICO, gl: null, gv: null },
-          { local: EQUIPOS_IDS.PARQUE, visita: EQUIPOS_IDS.VENCEDORES, gl: null, gv: null },
-          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.POSTA, gl: null, gv: null },
-          { local: EQUIPOS_IDS.BOCA, visita: EQUIPOS_IDS.PANAMERICANA, gl: null, gv: null },
+          { local: EQUIPOS_IDS.SAN_MARTIN, visita: EQUIPOS_IDS.FLAMENGO, gl: 2, gv: 0 },
+          { local: EQUIPOS_IDS.SANTA_ROSA, visita: EQUIPOS_IDS.SAMAN_CHICO, gl: 1, gv: 2 },
+          { local: EQUIPOS_IDS.PARQUE, visita: EQUIPOS_IDS.VENCEDORES, gl: 2, gv: 1 },
+          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.POSTA, gl: 1, gv: 0 },
+          { local: EQUIPOS_IDS.BOCA, visita: EQUIPOS_IDS.PANAMERICANA, gl: 0, gv: 3 },
+        ]
+      },
+      // ── FECHA 10 (19 de julio) — por jugar ──
+      {
+        numero: 10,
+        fecha: '19 de julio 2026',
+        partidos: [
+          { local: EQUIPOS_IDS.POSTA, visita: EQUIPOS_IDS.FLAMENGO, gl: null, gv: null },
+          { local: EQUIPOS_IDS.VENCEDORES, visita: EQUIPOS_IDS.SANTA_ROSA, gl: null, gv: null },
+          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.BOCA, gl: null, gv: null },
+          { local: EQUIPOS_IDS.PANAMERICANA, visita: EQUIPOS_IDS.PARQUE, gl: null, gv: null },
+          { local: EQUIPOS_IDS.PALMERAS, visita: EQUIPOS_IDS.SAN_MARTIN, gl: null, gv: null },
         ]
       },
     ];
@@ -1197,6 +1209,14 @@
       gonzales_julio: 'Gonzales Ordinola Julio',
       silva_marlon: 'Silva Calderón Marlon',
       garcia_anthony: 'Garcia Risco Anthony',
+      // ── Fecha 9 — 12 de julio ──
+      saldarriaga_franklin: 'Saldarriaga Sanchez Franklin',
+      calderon_deiby: 'Calderón Vargas Deiby',
+      valladolid_juan: 'Valladolid Chero Juan',
+      espinoza_piero: 'Espinoza Palomino Piero',
+      gonzales_helbert: 'Gonzales Saldarriaga Helbert',
+      ordinola_efrain: 'Ordinola Urbina Efrain',
+      ato_lorenzo: 'Ato Nole Lorenzo',
     }
     // ── 3. GOLEADORES ─────────────────────────────────────────────────────────
     // FUENTE ÚNICA DE VERDAD: detalle por jugador y fecha (archivos fecha_N.md).
@@ -1297,6 +1317,19 @@
       { fecha: 8, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.mena_anderson, goles: 1 },
       { fecha: 8, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.palomino_jorge, goles: 1 },
       { fecha: 8, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.blume_aron, goles: 1 },
+      // ── Fecha 9 — 12 de julio ──
+      { fecha: 9, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.saldarriaga_franklin, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.SAN_MARTIN, jugador: Jugadores.leandro_saldarriaga, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.calderon_deiby, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.castro_angel, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.sandoval_paul, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.torres_halisson, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.valladolid_juan, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.cesar_mena_r, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_santos, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.palomino_jorge, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.harold_palomino, goles: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.espinoza_piero, goles: 1 },
     ];
 
     // Totales por jugador derivados del detalle (no editar a mano).
@@ -1415,6 +1448,13 @@
       { fecha: 8, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.silva_marlon, a: 1, r: 0 },
       { fecha: 8, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.garcia_anthony, a: 1, r: 0 },
       { fecha: 8, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.blume_aron, a: 1, r: 0 },
+      // ── Fecha 9 — 12 de julio ──
+      { fecha: 9, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.gonzales_helbert, a: 0, r: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.castro_angel, a: 1, r: 0 },
+      { fecha: 9, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.sandoval_paul, a: 1, r: 0 },
+      { fecha: 9, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.ordinola_efrain, a: 0, r: 1 },
+      { fecha: 9, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.farias_cesar, a: 1, r: 0 },
+      { fecha: 9, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.ato_lorenzo, a: 1, r: 0 },
     ];
 
     // Totales por equipo derivados del detalle (no editar a mano).
