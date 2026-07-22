@@ -1076,16 +1076,27 @@
           { local: EQUIPOS_IDS.BOCA, visita: EQUIPOS_IDS.PANAMERICANA, gl: 0, gv: 3 },
         ]
       },
-      // ── FECHA 10 (19 de julio) — por jugar ──
+      // ── FECHA 10 (19 de julio) ──
       {
         numero: 10,
         fecha: '19 de julio 2026',
         partidos: [
-          { local: EQUIPOS_IDS.POSTA, visita: EQUIPOS_IDS.FLAMENGO, gl: null, gv: null },
-          { local: EQUIPOS_IDS.VENCEDORES, visita: EQUIPOS_IDS.SANTA_ROSA, gl: null, gv: null },
-          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.BOCA, gl: null, gv: null },
-          { local: EQUIPOS_IDS.PANAMERICANA, visita: EQUIPOS_IDS.PARQUE, gl: null, gv: null },
-          { local: EQUIPOS_IDS.PALMERAS, visita: EQUIPOS_IDS.SAN_MARTIN, gl: null, gv: null },
+          { local: EQUIPOS_IDS.POSTA, visita: EQUIPOS_IDS.FLAMENGO, gl: 2, gv: 0 },
+          { local: EQUIPOS_IDS.VENCEDORES, visita: EQUIPOS_IDS.SANTA_ROSA, gl: 1, gv: 5 },
+          { local: EQUIPOS_IDS.PLAZA, visita: EQUIPOS_IDS.BOCA, gl: 1, gv: 0 },
+          { local: EQUIPOS_IDS.PANAMERICANA, visita: EQUIPOS_IDS.PARQUE, gl: 1, gv: 2 },
+          { local: EQUIPOS_IDS.PALMERAS, visita: EQUIPOS_IDS.SAN_MARTIN, gl: null, gv: null }, // W.O. pendiente de marcador
+        ]
+      },
+      // ── FECHA 11 (26 de julio) — GRAN FINAL — por jugar ──
+      {
+        numero: 11,
+        fecha: '26 de julio 2026',
+        partidos: [
+          { local: EQUIPOS_IDS.BOCA, visita: EQUIPOS_IDS.POSTA, gl: null, gv: null },
+          { local: EQUIPOS_IDS.SAN_MARTIN, visita: EQUIPOS_IDS.SAMAN_CHICO, gl: null, gv: null },
+          { local: EQUIPOS_IDS.SANTA_ROSA, visita: EQUIPOS_IDS.PANAMERICANA, gl: null, gv: null },
+          { local: EQUIPOS_IDS.PARQUE, visita: EQUIPOS_IDS.PLAZA, gl: null, gv: null },
         ]
       },
     ];
@@ -1217,6 +1228,13 @@
       gonzales_helbert: 'Gonzales Saldarriaga Helbert',
       ordinola_efrain: 'Ordinola Urbina Efrain',
       ato_lorenzo: 'Ato Nole Lorenzo',
+      // ── Fecha 10 — 19 de julio ──
+      romero_yonald: 'Romero Mejía Yonald',
+      yarlaque_ricardo: 'Yarlaque Palomino Ricardo',
+      nieves_arnold: 'Nieves Gonzalez Arnold',
+      vargas_edinson: 'Ruiz Vargas Edinson',
+      more_samir: 'More Gonzalez Samir',
+      calderon_jose_rodolfo: 'Calderón Urbina José Rodolfo',
     }
     // ── 3. GOLEADORES ─────────────────────────────────────────────────────────
     // FUENTE ÚNICA DE VERDAD: detalle por jugador y fecha (archivos fecha_N.md).
@@ -1330,6 +1348,15 @@
       { fecha: 9, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.palomino_jorge, goles: 1 },
       { fecha: 9, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.harold_palomino, goles: 1 },
       { fecha: 9, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.espinoza_piero, goles: 1 },
+      // ── Fecha 10 — 19 de julio ──
+      { fecha: 10, equipo: EQUIPOS_IDS.POSTA, jugador: Jugadores.marco_garrido, goles: 2 },
+      { fecha: 10, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.calderon_jose_rodolfo, goles: 1 },
+      { fecha: 10, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.silva, goles: 3 },
+      { fecha: 10, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.romero_yonald, goles: 1 },
+      { fecha: 10, equipo: EQUIPOS_IDS.SANTA_ROSA, jugador: Jugadores.calderon_carlos, goles: 1 },
+      { fecha: 10, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_santos, goles: 1 },
+      { fecha: 10, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.torres_halisson, goles: 2 },
+      { fecha: 10, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.yarlaque_ricardo, goles: 1 },
     ];
 
     // Totales por jugador derivados del detalle (no editar a mano).
@@ -1455,6 +1482,14 @@
       { fecha: 9, equipo: EQUIPOS_IDS.SAMAN_CHICO, jugador: Jugadores.ordinola_efrain, a: 0, r: 1 },
       { fecha: 9, equipo: EQUIPOS_IDS.VENCEDORES, jugador: Jugadores.farias_cesar, a: 1, r: 0 },
       { fecha: 9, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.ato_lorenzo, a: 1, r: 0 },
+      // ── Fecha 10 — 19 de julio ──
+      { fecha: 10, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_luis, a: 1, r: 0 },
+      { fecha: 10, equipo: EQUIPOS_IDS.PLAZA, jugador: Jugadores.farias_michael, a: 0, r: 1 },
+      { fecha: 10, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.farias_jhonatan, a: 0, r: 1 },
+      { fecha: 10, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.saavedra_ever, a: 1, r: 0 },
+      { fecha: 10, equipo: EQUIPOS_IDS.BOCA, jugador: Jugadores.more_samir, a: 1, r: 0 },
+      { fecha: 10, equipo: EQUIPOS_IDS.PARQUE, jugador: Jugadores.vargas_edinson, a: 1, r: 0 },
+      { fecha: 10, equipo: EQUIPOS_IDS.PANAMERICANA, jugador: Jugadores.nieves_arnold, a: 1, r: 0 },
     ];
 
     // Totales por equipo derivados del detalle (no editar a mano).
